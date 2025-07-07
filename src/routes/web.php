@@ -1,6 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\AddressChangeController;
+Use App\Http\Controllers\CommentController;
+Use App\Http\Controllers\FavoriteController;
+Use App\Http\Controllers\ItemBuyController;
+Use App\Http\Controllers\ItemSellController;
+Use App\Http\Controllers\MyPageController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,3 +21,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [ItemController::class, 'topPageShow']);
+Route::get('/item', [ItemController::class, 'itemPageShow']);
+Route::get('/buy/address', [AddressChangeController::class, 'addressChangePageShow']);
