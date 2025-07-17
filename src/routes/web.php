@@ -3,11 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\AddressChangeController;
-Use App\Http\Controllers\CommentController;
-Use App\Http\Controllers\FavoriteController;
-Use App\Http\Controllers\ItemBuyController;
-Use App\Http\Controllers\ItemSellController;
-Use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ItemBuyController;
+use App\Http\Controllers\ItemSellController;
+use App\Http\Controllers\MypageController;
 
 
 /*
@@ -24,3 +24,4 @@ Use App\Http\Controllers\MyPageController;
 Route::get('/', [ItemController::class, 'topPageShow']);
 Route::get('/item', [ItemController::class, 'itemPageShow']);
 Route::get('/buy/address', [AddressChangeController::class, 'addressChangePageShow']);
+Route::get('/profile', [MypageController::class, 'mypageEditPageShow']);
