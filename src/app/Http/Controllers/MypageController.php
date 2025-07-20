@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Profile;
 
 class MypageController extends Controller
 {
@@ -25,27 +26,22 @@ class MypageController extends Controller
             'building' => ['nullable', 'string', 'max:255'],
         ]);
 
-        // プロフィール画像のアップロード処理
-        if ($request->hasFile('profile_image')) {
-            // 古い画像があれば削除
-            if ($user->profile_image) {
-                Storage::disk('public')->delete('profile_images/' . $user->profile_image);
-            }
-
-            // 新しい画像を保存
-            $image = $request->file('profile_image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->storeAs('profile_images', $imageName, 'public');
-            $user->profile_image = $imageName;
-        }
-
-        // 他のフィールドを更新
+        // ユーザー名を更新
         $user->name = $request->name;
-        $user->postal_code = $request->postal_code;
-        $user->address = $request->address;
-        $user->building = $request->building;
-        
         $user->save();
+
+        // プロフィール情報を更新または作成
+        $profile = $user->profile ?? new Profile(['user_id' => $user->id]);
+        
+        $profile->postcode = $request->postal_code;
+        $profile->address = $request->address;
+        $profile->building = $request->building;
+        
+        if (!$profile->exists) {
+            $user->profile()->save($profile);
+        } else {
+            $profile->save();
+        }
 
         return redirect()->route('profile')->with('success', 'プロフィールを更新しました。');
     }
