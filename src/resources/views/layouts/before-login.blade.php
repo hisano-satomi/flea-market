@@ -9,9 +9,30 @@
 </head>
 <body>
     <header>
-        <h1>
-            <a href=""><img src="{{ asset('images/logo.svg') }}" alt="coachtechロゴ"></a>
-        </h1>
+        <div class="header-container">
+            <h1>
+                <a href="/"><img src="{{ asset('images/logo.svg') }}" alt="coachtechロゴ"></a>
+            </h1>
+            
+            <!-- 検索フォーム -->
+            <div class="search-form">
+                <form method="GET" action="/search">
+                    <input type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
+                    <button type="submit">🔍</button>
+                </form>
+            </div>
+            
+            <!-- ナビゲーション -->
+            <nav class="header-nav">
+                <a href="/login">ログイン</a>
+                <a href="/mypage">マイページ</a>
+                <a href="/sell">出品</a>
+            </nav>
+        </div>
     </header>
+
+    <main>
+        @yield('content')
+    </main>
 </body>
 </html>

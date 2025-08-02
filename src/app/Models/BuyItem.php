@@ -12,9 +12,20 @@ class BuyItem extends Model
     protected $fillable = [
         'user_id',
         'item_id',
-        'quantity',
         'send_postcode',
         'send_address',
         'send_building',
     ];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
+    }
 }

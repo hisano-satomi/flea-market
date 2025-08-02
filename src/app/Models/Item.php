@@ -18,4 +18,34 @@ class Item extends Model
         'description',
         'price',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function condition()
+    {
+        return $this->belongsTo(Condition::class);
+    }
+
+    public function buyItem()
+    {
+        return $this->hasOne(BuyItem::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function itemCategories()
+    {
+        return $this->hasMany(ItemCategory::class);
+    }
 }

@@ -24,9 +24,13 @@ use App\Http\Controllers\MypageController;
 Route::get('/', [ItemController::class, 'topPageShow']);
 Route::get('/item', [ItemController::class, 'itemPageShow']);
 Route::get('/buy/address', [AddressChangeController::class, 'addressChangePageShow']);
+Route::get('/buy', [ItemBuyController::class, 'itemBuyPageShow']);
+Route::get('/sell', [ItemSellController::class, 'itemSellPageShow']);
+Route::get('/mypage', [MypageController::class, 'mypageShow'])->name('mypage');
+
 
 // 認証が必要なルート
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [MypageController::class, 'mypageEditPageShow'])->name('profile');
-    Route::put('/profile', [MypageController::class, 'mypageUpdate'])->name('profile.update');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [MypageController::class, 'mypageEditPageShow'])->name('profile');
+//     Route::put('/profile', [MypageController::class, 'mypageUpdate'])->name('profile.update');
+// });

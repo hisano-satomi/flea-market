@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Profile;
+use App\Models\Item;
+use App\Models\BuyItem;
 
 class MypageController extends Controller
 {
+    public function mypageShow()
+    {
+        return view('auth.mypage');
+    }
+
     public function mypageEditPageShow()
     {
         $user = auth()->user();
