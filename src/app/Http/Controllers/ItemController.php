@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Item;
 
 class ItemController extends Controller
 {
@@ -11,8 +12,9 @@ class ItemController extends Controller
         return view('top');
     }
 
-    public function itemPageShow()
+    public function itemPageShow($id)
     {
-        return view('item');
+        $item = Item::findOrFail($id);
+        return view('item', compact('item'));
     }
 }

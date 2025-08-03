@@ -22,7 +22,7 @@ use App\Http\Controllers\MypageController;
 */
 
 Route::get('/', [ItemController::class, 'topPageShow']);
-Route::get('/item', [ItemController::class, 'itemPageShow']);
+Route::get('/item/{id}', [ItemController::class, 'itemPageShow']);
 Route::get('/buy/address', [AddressChangeController::class, 'addressChangePageShow']);
 Route::get('/buy', [ItemBuyController::class, 'itemBuyPageShow']);
 Route::get('/sell', [ItemSellController::class, 'itemSellPageShow']);

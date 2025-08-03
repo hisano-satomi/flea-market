@@ -24,7 +24,15 @@
             
             <!-- ナビゲーション -->
             <nav class="header-nav">
-                <a href="/login">ログイン</a>
+                @guest
+                    <a href="/login">ログイン</a>
+                @endguest
+                @auth
+                    <form method="POST" action="/logout" style="display: inline;">
+                        @csrf
+                        <button type="submit" style="background: none; border: none; color: inherit; text-decoration: underline; cursor: pointer;">ログアウト</button>
+                    </form>
+                @endauth
                 <a href="/mypage">マイページ</a>
                 <a href="/sell">出品</a>
             </nav>

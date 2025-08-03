@@ -18,22 +18,26 @@
         <div class="items-grid">
             <!-- 商品カード 1 -->
             <div class="item-card">
-                <div class="item-image">
-                    <img src="{{ asset('images/sample1.jpg') }}" alt="商品1">
-                </div>
-                <div class="item-info">
-                    <h3 class="item-name">iPhone 14 Pro Max</h3>
-                </div>
+                <a href="/item/1" class="item-link">
+                    <div class="item-image">
+                        <img src="{{ asset('images/sample1.jpg') }}" alt="商品1">
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">iPhone 14 Pro Max</h3>
+                    </div>
+                </a>
             </div>
 
             <!-- 商品カード 2 -->
             <div class="item-card">
-                <div class="item-image">
-                    <img src="{{ asset('images/sample2.jpg') }}" alt="商品2">
-                </div>
-                <div class="item-info">
-                    <h3 class="item-name">ナイキ エアマックス</h3>
-                </div>
+                <a href="/item/2" class="item-link">
+                    <div class="item-image">
+                        <img src="{{ asset('images/sample2.jpg') }}" alt="商品2">
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">ナイキ エアマックス</h3>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -46,24 +50,28 @@
             <div class="items-grid">
                 <!-- お気に入り商品カード 1 -->
                 <div class="item-card">
-                    <div class="item-image">
-                        <img src="{{ asset('images/favorite1.jpg') }}" alt="お気に入り1">
-                        <div class="favorite-badge">♥</div>
-                    </div>
-                    <div class="item-info">
-                        <h3 class="item-name">お気に入りの時計</h3>
-                    </div>
+                    <a href="/item/3" class="item-link">
+                        <div class="item-image">
+                            <img src="{{ asset('images/favorite1.jpg') }}" alt="お気に入り1">
+                            <div class="favorite-badge">♥</div>
+                        </div>
+                        <div class="item-info">
+                            <h3 class="item-name">お気に入りの時計</h3>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- お気に入り商品カード 2 -->
                 <div class="item-card">
-                    <div class="item-image">
-                        <img src="{{ asset('images/favorite2.jpg') }}" alt="お気に入り2">
-                        <div class="favorite-badge">♥</div>
-                    </div>
-                    <div class="item-info">
-                        <h3 class="item-name">お気に入りのバッグ</h3>
-                    </div>
+                    <a href="/item/4" class="item-link">
+                        <div class="item-image">
+                            <img src="{{ asset('images/favorite2.jpg') }}" alt="お気に入り2">
+                            <div class="favorite-badge">♥</div>
+                        </div>
+                        <div class="item-info">
+                            <h3 class="item-name">お気に入りのバッグ</h3>
+                        </div>
+                    </a>
                 </div>
             </div>
         @endauth

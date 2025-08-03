@@ -13,6 +13,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\RegisterResponse;
+use Laravel\Fortify\Contracts\LoginResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -44,6 +45,14 @@ class FortifyServiceProvider extends ServiceProvider
             public function toResponse($request)
             {
                 return redirect('/profile');
+            }
+        });
+
+        // ログイン後のリダイレクト先をカスタマイズ
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse {
+            public function toResponse($request)
+            {
+                return redirect('/');
             }
         });
 

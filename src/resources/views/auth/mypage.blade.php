@@ -6,7 +6,7 @@
         <img src="" alt="Profile Image">
     </div>
     <div class="profile-edit">
-        <a href="">プロフィールを編集</a>
+        <a href="/profile">プロフィールを編集</a>
     </div>
 </div>
 

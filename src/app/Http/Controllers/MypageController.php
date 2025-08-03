@@ -24,14 +24,6 @@ class MypageController extends Controller
     public function mypageUpdate(Request $request)
     {
         $user = auth()->user();
-        
-        $request->validate([
-            'profile_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'], // 2MB以下
-            'name' => ['required', 'string', 'max:255'],
-            'postal_code' => ['required', 'string', 'max:8'],
-            'address' => ['required', 'string', 'max:255'],
-            'building' => ['nullable', 'string', 'max:255'],
-        ]);
 
         // ユーザー名を更新
         $user->name = $request->name;
@@ -50,6 +42,6 @@ class MypageController extends Controller
             $profile->save();
         }
 
-        return redirect()->route('profile')->with('success', 'プロフィールを更新しました。');
+        return redirect('/')->with('success', 'プロフィールを更新しました。');
     }
 }
