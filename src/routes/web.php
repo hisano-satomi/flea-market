@@ -30,7 +30,7 @@ Route::get('/mypage', [MypageController::class, 'mypageShow'])->name('mypage');
 
 
 // 認証が必要なルート
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [MypageController::class, 'mypageEditPageShow'])->name('profile');
-//     Route::put('/profile', [MypageController::class, 'mypageUpdate'])->name('profile.update');
-// });
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [MypageController::class, 'mypageEditPageShow'])->name('profile');
+    Route::put('/profile', [MypageController::class, 'mypageUpdate'])->name('profile.update');
+});

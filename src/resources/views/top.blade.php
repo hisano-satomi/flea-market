@@ -42,29 +42,37 @@
     <!-- マイリストタブのコンテンツ -->
     @if(request('tab') === 'mylist')
     <div class="tab-content active" id="mylist">
-        <div class="items-grid">
-            <!-- お気に入り商品カード 1 -->
-            <div class="item-card">
-                <div class="item-image">
-                    <img src="{{ asset('images/favorite1.jpg') }}" alt="お気に入り1">
-                    <div class="favorite-badge">♥</div>
+        @auth
+            <div class="items-grid">
+                <!-- お気に入り商品カード 1 -->
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="{{ asset('images/favorite1.jpg') }}" alt="お気に入り1">
+                        <div class="favorite-badge">♥</div>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">お気に入りの時計</h3>
+                    </div>
                 </div>
-                <div class="item-info">
-                    <h3 class="item-name">お気に入りの時計</h3>
-                </div>
-            </div>
 
-            <!-- お気に入り商品カード 2 -->
-            <div class="item-card">
-                <div class="item-image">
-                    <img src="{{ asset('images/favorite2.jpg') }}" alt="お気に入り2">
-                    <div class="favorite-badge">♥</div>
-                </div>
-                <div class="item-info">
-                    <h3 class="item-name">お気に入りのバッグ</h3>
+                <!-- お気に入り商品カード 2 -->
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="{{ asset('images/favorite2.jpg') }}" alt="お気に入り2">
+                        <div class="favorite-badge">♥</div>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">お気に入りのバッグ</h3>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endauth
+        @guest
+            <div class="no-items">
+                <p>マイリストはログイン後にご利用いただけます。</p>
+                <a href="/login" class="login-link">ログインする</a>
+            </div>
+        @endguest
     </div>
     @endif
 </div>
