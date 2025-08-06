@@ -1,4 +1,4 @@
-@extends('layouts.after-login')
+@extends(auth()->check() ? 'layouts.after-login' : 'layouts.before-login')
 
 @section('content')
 <div class="container">

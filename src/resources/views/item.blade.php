@@ -1,4 +1,4 @@
-@extends('layouts.after-login')
+@extends(auth()->check() ? 'layouts.after-login' : 'layouts.before-login')
 
 @section('content')
 <div class="left-container">
@@ -24,8 +24,8 @@
         <div class="comment-count">1</div>
     </div>
 
-    <form method="POST" action="">
-        @csrf
+    <form method="GET" action="/buy">
+        <input type="hidden" name="item_id" value="{{ $item->id ?? 1 }}">
         <button type="submit">購入手続きへ</button>
     </form>
     

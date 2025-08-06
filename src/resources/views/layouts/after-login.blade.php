@@ -24,17 +24,12 @@
             
             <!-- ナビゲーション -->
             <nav class="header-nav">
-                @guest
-                    <a href="/login">ログイン</a>
-                @endguest
-                @auth
-                    <form method="POST" action="/logout" style="display: inline;">
-                        @csrf
-                        <button type="submit" style="background: none; border: none; color: inherit; text-decoration: underline; cursor: pointer;">ログアウト</button>
-                    </form>
-                @endauth
                 <a href="/mypage">マイページ</a>
                 <a href="/sell">出品</a>
+                <form method="POST" action="/logout">
+                    @csrf
+                    <button type="submit">ログアウト</button>
+                </form>
             </nav>
         </div>
     </header>
