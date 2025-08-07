@@ -13,6 +13,7 @@ class Item extends Model
         'user_id',
         'img',
         'condition_id',
+        'itemcategory_id',
         'name',
         'brand',
         'description',
@@ -27,6 +28,11 @@ class Item extends Model
     public function condition()
     {
         return $this->belongsTo(Condition::class);
+    }
+
+    public function itemCategory()
+    {
+        return $this->belongsTo(ItemCategory::class, 'itemcategory_id');
     }
 
     public function buyItem()
@@ -47,5 +53,10 @@ class Item extends Model
     public function itemCategories()
     {
         return $this->hasMany(ItemCategory::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'item_categories', 'item_id', 'category_id');
     }
 }
