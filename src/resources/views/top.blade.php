@@ -16,29 +16,19 @@
     @if(request('tab', 'recommend') === 'recommend')
     <div class="tab-content active" id="recommend">
         <div class="items-grid">
-            <!-- 商品カード 1 -->
+            @foreach($items as $item)
+            <!-- 商品カード -->
             <div class="item-card">
-                <a href="/item/1" class="item-link">
+                <a href="/item/{{ $item->id }}" class="item-link">
                     <div class="item-image">
-                        <img src="{{ asset('images/sample1.jpg') }}" alt="商品1">
+                        <img src="{{ $item->img ? asset('storage/' . $item->img) : asset('images/noimage.png') }}" alt="{{ $item->name }}">
                     </div>
                     <div class="item-info">
-                        <h3 class="item-name">iPhone 14 Pro Max</h3>
+                        <h3 class="item-name">{{ $item->name }}</h3>
                     </div>
                 </a>
             </div>
-
-            <!-- 商品カード 2 -->
-            <div class="item-card">
-                <a href="/item/2" class="item-link">
-                    <div class="item-image">
-                        <img src="{{ asset('images/sample2.jpg') }}" alt="商品2">
-                    </div>
-                    <div class="item-info">
-                        <h3 class="item-name">ナイキ エアマックス</h3>
-                    </div>
-                </a>
-            </div>
+            @endforeach
         </div>
     </div>
     @endif

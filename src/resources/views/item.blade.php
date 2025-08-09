@@ -4,15 +4,15 @@
 <div class="left-container">
     <div class="item-img">
         商品画像
-        <img src="" alt="">
+        <img src="{{ $item->img ? asset('storage/' . $item->img) : asset('images/noimage.png') }}" alt="{{ $item->name }}">
     </div>
 </div>
 <div class="right-container">
-    <h2>商品名がここに入る</h2>
+    <h2>{{ $item->name }}</h2>
 
-    <p class="brand-name">ブランド名</p>
+    <p class="brand-name">{{ $item->brand }}</p>
 
-    <p class="price">￥47,000'(税込)</p>
+    <p class="price">￥{{ number_format($item->price) }} (税込)</p>
     
     <div class="favorite-info">
         <div class="favorite-icon">★</div>
@@ -25,19 +25,21 @@
     </div>
 
     <form method="GET" action="/buy">
-        <input type="hidden" name="item_id" value="{{ $item->id ?? 1 }}">
+        <input type="hidden" name="item_id" value="{{ $item->id }}">
         <button type="submit">購入手続きへ</button>
     </form>
     
     <div class="description-container">
         <h3>商品説明</h3>
-        <p class="description">商品説明がはいります</p>
+        <p class="description">{{ $item->description }}</p>
     </div>
 
     <div class="item-info">
         <h3>商品の情報</h3>
         <h4>カテゴリー</h4>
+        <p>{{ $item->categories->pluck('category')->join(', ') }}</p>
         <h4>商品の状態</h4>
+        <p>{{ $item->condition->condition ?? '' }}</p>
     </div>
 
     <div class="comment-container">

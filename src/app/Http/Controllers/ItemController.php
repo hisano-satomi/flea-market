@@ -9,7 +9,8 @@ class ItemController extends Controller
 {
     public function topPageShow()
     {
-        return view('top');
+        $items = Item::orderBy('created_at', 'desc')->get();
+        return view('top', compact('items'));
     }
 
     public function itemPageShow($id)
