@@ -3,6 +3,10 @@
 @section('content')
 <form action="/buy" method="POST">
 @csrf
+<input type="hidden" name="item_id" value="{{ $item->id }}">
+<input type="hidden" name="send_postcode" value="{{ $profile->postcode }}">
+<input type="hidden" name="send_address" value="{{ $profile->address }}">
+<input type="hidden" name="send_building" value="{{ $profile->building }}">
     <div class="left-container">
         <div class="item-info">
             <div class="item-img"></div>

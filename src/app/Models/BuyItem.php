@@ -12,6 +12,7 @@ class BuyItem extends Model
     protected $fillable = [
         'user_id',
         'item_id',
+        'payment_method',
         'send_postcode',
         'send_address',
         'send_building',
