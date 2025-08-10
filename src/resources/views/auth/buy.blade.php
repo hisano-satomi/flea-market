@@ -4,9 +4,9 @@
 <form action="/buy" method="POST">
 @csrf
 <input type="hidden" name="item_id" value="{{ $item->id }}">
-<input type="hidden" name="send_postcode" value="{{ $profile->postcode }}">
-<input type="hidden" name="send_address" value="{{ $profile->address }}">
-<input type="hidden" name="send_building" value="{{ $profile->building }}">
+<input type="hidden" name="send_postcode" value="{{ session()->has('buy_postal_code') ? session('buy_postal_code') : $profile->postcode }}">
+<input type="hidden" name="send_address" value="{{ session()->has('buy_address') ? session('buy_address') : $profile->address }}">
+<input type="hidden" name="send_building" value="{{ session()->has('buy_building') ? session('buy_building') : $profile->building }}">
     <div class="left-container">
         <div class="item-info">
             <div class="item-img"></div>
@@ -22,10 +22,10 @@
         </div>
         <div class="send-address">
             <h4>配送先</h4>
-            <a href="/buy/address">変更する</a>
-            <p>{{ $profile->postcode }}</p>
-            <p>{{ $profile->address }} </p>
-            <p>{{ $profile->building }}</p>
+            <a href="/buy/address?item_id={{ $item->id }}">変更する</a>
+            <p>{{ session()->has('buy_postal_code') ? session('buy_postal_code') : $profile->postcode }}</p>
+            <p>{{ session()->has('buy_address') ? session('buy_address') : $profile->address }}</p>
+            <p>{{ session()->has('buy_building') ? session('buy_building') : $profile->building }}</p>
         </div>
     </div>
     <div class="right-container">

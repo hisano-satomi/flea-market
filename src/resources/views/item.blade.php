@@ -40,7 +40,7 @@
 
     <div class="comment-info">
         <div class="comment-icon">💬</div>
-        <div class="comment-count">1</div>
+        <div class="comment-count">{{ $item->comments->count() }}</div>
     </div>
 
     <form method="GET" action="/buy">
@@ -63,12 +63,20 @@
 
     <div class="comment-container">
         <h3>コメント</h3>
-        <div class="comment-author">コメントしたユーザー名</div>
-        <div class="comment-text">コメント内容がここに入ります</div>
-        <form method="POST" action="">
+        @foreach($comments as $comment)
+            <div class="comment-author">
+                <div class="comment-author__img">
+                    <img src="{{ $comment->user->profile_image ?? asset('images/noimage.png') }}" alt="{{ $comment->user->name ?? '名無し' }}">
+                </div>
+                <div class="comment-author__name">{{ $comment->user->name ?? '名無し' }}</div>
+            </div>
+            <div class="comment-text">{{ $comment->comment }}</div>
+        @endforeach
+        <form method="POST" action="{{ route('comment.store') }}">
             @csrf
+            <input type="hidden" name="item_id" value="{{ $item->id }}">
             <p>商品へのコメント</p>
-            <textarea name="comment" placeholder="コメントを入力"></textarea>
+            <textarea name="comment"></textarea>
             <button type="submit">コメントを送信する</button>
         </form>
     </div>

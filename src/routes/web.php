@@ -33,10 +33,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [MypageController::class, 'mypageEditPageShow'])->name('profile');
     Route::put('/profile', [MypageController::class, 'mypageUpdate'])->name('profile.update');
     Route::get('/buy/address', [AddressChangeController::class, 'addressChangePageShow']);
+    Route::post('/buy/address', [AddressChangeController::class, 'addressChange'])->name('buy.address.update');
     Route::get('/buy', [ItemBuyController::class, 'itemBuyPageShow']);
     
     Route::get('/mypage', [MypageController::class, 'mypageShow'])->name('mypage');
     // お気に入り登録・解除
     Route::post('/favorite', [FavoriteController::class, 'favoriteRegistration'])->name('favorite.store');
     Route::post('/favorite/delete', [FavoriteController::class, 'favoriteCancellation'])->name('favorite.destroy');
+    // コメント登録
+    Route::post('/comment', [CommentController::class, 'commentRegistration'])->name('comment.store');
 });

@@ -15,7 +15,8 @@ class ItemController extends Controller
 
     public function itemPageShow($id)
     {
-        $item = Item::findOrFail($id);
-        return view('item', compact('item'));
+    $item = Item::findOrFail($id);
+    $comments = $item->comments()->with('user')->latest()->get();
+    return view('item', compact('item', 'comments'));
     }
 }
