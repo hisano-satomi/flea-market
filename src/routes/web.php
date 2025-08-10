@@ -36,4 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/buy', [ItemBuyController::class, 'itemBuyPageShow']);
     
     Route::get('/mypage', [MypageController::class, 'mypageShow'])->name('mypage');
+    // お気に入り登録・解除
+    Route::post('/favorite', [FavoriteController::class, 'favoriteRegistration'])->name('favorite.store');
+    Route::post('/favorite/delete', [FavoriteController::class, 'favoriteCancellation'])->name('favorite.destroy');
 });

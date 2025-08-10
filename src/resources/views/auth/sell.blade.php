@@ -18,16 +18,16 @@
                            id="category_{{ $category->id }}" 
                            name="categories[]" 
                            value="{{ $category->id }}">
+                    <label for="category_{{ $category->id }}">{{ $category->category }}</label>
                 </div>
             @endforeach
         </div>
         <div class="item-condition">
             <h4>商品の状態</h4>
             <select id="condition" name="condition" required>
-                <option value="new">良好</option>
-                <option value="used">目立った傷や汚れなし</option>
-                <option value="damaged">やや傷や汚れあり</option>
-                <option value="destroyed">状態が悪い</option>
+                @foreach($conditions as $condition)
+                    <option value="{{ $condition->id }}">{{ $condition->condition }}</option>
+                @endforeach
             </select>
         </div>
         <h3>商品名と説明</h3>

@@ -15,8 +15,27 @@
     <p class="price">￥{{ number_format($item->price) }} (税込)</p>
     
     <div class="favorite-info">
-        <div class="favorite-icon">★</div>
-        <div class="favorite-count">1</div>
+        <div class="favorite-icon">
+            @auth
+                @php
+                    $isFavorited = $item->favorites->where('user_id', auth()->id())->count() > 0;
+                @endphp
+                <form method="POST" action="{{ $isFavorited ? route('favorite.destroy') : route('favorite.store') }}">
+                    @csrf
+                    <input type="hidden" name="item_id" value="{{ $item->id }}">
+                    <button type="submit" style="background:none;border:none;padding:0;cursor:pointer;">
+                        @if($isFavorited)
+                            <span style="color: gold;">★</span>
+                        @else
+                            <span style="color: gray;">☆</span>
+                        @endif
+                    </button>
+                </form>
+            @else
+                <span style="color: gray;">☆</span>
+            @endauth
+        </div>
+        <div class="favorite-count">{{ $item->favorites->count() }}</div>
     </div>
 
     <div class="comment-info">
