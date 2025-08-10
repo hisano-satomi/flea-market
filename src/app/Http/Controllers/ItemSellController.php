@@ -28,17 +28,6 @@ class ItemSellController extends Controller
             $imagePath = $request->file('item_image')->store('items', 'public');
         }
 
-        // カテゴリーのバリデーション
-        if (!$request->categories || !is_array($request->categories) || empty($request->categories)) {
-            return redirect()->back()->withErrors(['categories' => 'カテゴリーを選択してください。'])->withInput();
-        }
-
-        // 画像アップロード処理
-        $imagePath = null;
-        if ($request->hasFile('item_image')) {
-            $imagePath = $request->file('item_image')->store('items', 'public');
-        }
-
         // 商品を作成
         $item = Item::create([
             'user_id' => auth()->id(),
@@ -61,6 +50,6 @@ class ItemSellController extends Controller
             'itemcategory_id' => $itemCategory->id,
         ]);
 
-        return redirect('/')->with('success', '商品を出品しました！');
+        return redirect('/');
     }
 }

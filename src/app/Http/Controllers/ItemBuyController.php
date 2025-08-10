@@ -29,6 +29,11 @@ class ItemBuyController extends Controller
         $item = Item::findOrFail($request->input('item_id'));
         $user = auth()->user();
 
+        // 自分が出品した商品は購入できないようにする
+        if ($item->user_id === $user->id) {
+            return redirect()->back()->with('error', '自分が出品した商品は購入できません。');
+        }
+
         BuyItem::create([
             'user_id' => $user->id,
             'item_id' => $item->id,
