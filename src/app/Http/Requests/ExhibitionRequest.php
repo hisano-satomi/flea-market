@@ -28,7 +28,8 @@ class ExhibitionRequest extends FormRequest
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
-            'category_id' => 'required|exists:categories,id',
+            'category' => 'required|exists:categories,id',
+            'condition' => 'required|exists:conditions,id',
         ];
     }
 
@@ -42,8 +43,10 @@ class ExhibitionRequest extends FormRequest
             'name.required' => '商品名を入力してください',
             'description.required' => '商品説明を入力してください',
             'price.required' => '価格を入力してください',
-            'category_id.required' => 'カテゴリを選択してください',
-            'category_id.exists' => '選択したカテゴリは存在しません',
+            'category.required' => 'カテゴリを選択してください',
+            'category.exists' => '選択したカテゴリは存在しません',
+            'condition.required' => '商品の状態を選択してください',
+            'condition.exists' => '選択した商品の状態は存在しません',
         ];
     }
 }

@@ -25,8 +25,9 @@ class ProfileRequest extends FormRequest
     {
         return [
             'icon' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'postcode' => 'required',
-            'address' => 'required',
+            'name' => 'required|string|max:20',
+            'postcode' => 'required|string|max:10',
+            'address' => 'required|string|max:255',
         ];
     }
 
@@ -37,6 +38,7 @@ class ProfileRequest extends FormRequest
             'icon.image' => 'アイコンは画像ファイルである必要があります',
             'icon.mimes' => 'アイコンはjpeg、png、jpg、gif形式の画像である必要があります',
             'icon.max' => 'アイコンは2MB以下のサイズである必要があります',
+            'name.required' => 'ユーザー名を入力してください',
             'postcode.required' => '郵便番号を入力してください',
             'address.required' => '住所を入力してください',
         ];

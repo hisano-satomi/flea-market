@@ -18,22 +18,34 @@
 
         <div>
             <label for="name">ユーザー名</label>
-            <input id="name" type="text" name="name" value="{{ old('name', auth()->user()->name) }}" required autofocus>
+            <input id="name" type="text" name="name" value="{{ old('name', auth()->user()->name) }}" autofocus>
+            @error('name')
+                <div style="color:red;">{{ $message }}</div>
+            @enderror
         </div>
 
         <div>
-            <label for="postal_code">郵便番号</label>
-            <input id="postal_code" type="text" name="postal_code" value="{{ old('postal_code', optional(auth()->user()->profile)->postcode) }}" required>
+            <label for="postcode">郵便番号</label>
+            <input id="postcode" type="text" name="postcode" value="{{ old('postcode', optional(auth()->user()->profile)->postcode) }}">
+            @error('postcode')
+                <div style="color:red;">{{ $message }}</div>
+            @enderror
         </div>
 
         <div>
             <label for="address">住所</label>
-            <input id="address" type="text" name="address" value="{{ old('address', optional(auth()->user()->profile)->address) }}" required>
+            <input id="address" type="text" name="address" value="{{ old('address', optional(auth()->user()->profile)->address) }}">
+            @error('address')
+                <div style="color:red;">{{ $message }}</div>
+            @enderror
         </div>
 
         <div>
             <label for="building">建物名</label>
             <input id="building" type="text" name="building" value="{{ old('building', optional(auth()->user()->profile)->building) }}">
+            @error('building')
+                <div style="color:red;">{{ $message }}</div>
+            @enderror
         </div>
 
         <button type="submit">更新する</button>

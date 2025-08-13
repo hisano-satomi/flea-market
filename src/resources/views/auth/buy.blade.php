@@ -15,10 +15,13 @@
         </div>
         <div class="item-payment">
             <h4>支払い方法</h4>
-            <select id="payment" name="payment" required>
+            <select id="payment" name="payment">
                 <option value="convenience_store">コンビニ払い</option>
                 <option value="credit_card">カード払い</option>
             </select>
+            @error('payment')
+                <div style="color:red;">{{ $message }}</div>
+            @enderror
         </div>
         <div class="send-address">
             <h4>配送先</h4>

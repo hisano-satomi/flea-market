@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Condition;
 use App\Models\Item;
 use App\Models\ItemCategory;
+use App\Http\Requests\ExhibitionRequest;
 
 class ItemSellController extends Controller
 {
@@ -17,17 +18,11 @@ class ItemSellController extends Controller
         return view('auth.sell', compact('categories', 'conditions'));
     }
 
-    public function itemSell(Request $request)
+    public function itemSell(ExhibitionRequest $request)
     {
-        // dd($request->all());
         // 認証状態を確認
         if (!auth()->check()) {
             return redirect('/login')->with('error', 'ログインが必要です。');
-        }
-
-        // カテゴリーのバリデーション
-        if (!$request->categories || !is_array($request->categories) || empty($request->categories)) {
-            return redirect()->back()->withErrors(['categories' => 'カテゴリーを選択してください。'])->withInput();
         }
         
         // コンディションIDが実際に存在するかチェック

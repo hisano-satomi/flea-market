@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Profile;
 use App\Models\Item;
 use App\Models\BuyItem;
+
 
 class MypageController extends Controller
 {
@@ -21,7 +22,7 @@ class MypageController extends Controller
         return view('auth.profile', compact('user'));
     }
 
-    public function mypageUpdate(Request $request)
+    public function mypageUpdate(ProfileRequest $request)
     {
         $user = auth()->user();
 
