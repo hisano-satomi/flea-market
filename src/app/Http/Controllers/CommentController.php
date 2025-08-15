@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller
 {
-    public function commentRegistration(Request $request)
+    public function commentRegistration(CommentRequest $request)
     {
         $user = auth()->user();
         $comment = new Comment([

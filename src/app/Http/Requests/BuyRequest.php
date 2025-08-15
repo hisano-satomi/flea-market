@@ -24,14 +24,18 @@ class BuyRequest extends FormRequest
     public function rules()
     {
         return [
-            'payment_method' => 'required',
+            'payment' => 'required',
+            'send_postcode' => 'required|string|max:10',
+            'send_address' => 'required|string|max:255',
         ];
     }
 
     public function messages()
     {
         return [
-            'payment_method.required' => '支払い方法を選択してください',
+            'payment.required' => '支払い方法を選択してください',
+            'send_postcode.required' => '郵便番号を入力してください',
+            'send_address.required' => '住所を入力してください',
         ];
     }
 }

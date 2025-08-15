@@ -77,6 +77,9 @@
             <input type="hidden" name="item_id" value="{{ $item->id }}">
             <p>商品へのコメント</p>
             <textarea name="comment"></textarea>
+            @error('comment')
+                <div style="color:red;">{{ $message }}</div>
+            @enderror
             <button type="submit">コメントを送信する</button>
         </form>
     </div>

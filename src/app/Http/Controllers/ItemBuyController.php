@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\BuyItem;
+use App\Http\Requests\BuyRequest;
 
 class ItemBuyController extends Controller
 {
@@ -20,11 +21,14 @@ class ItemBuyController extends Controller
         $item = Item::findOrFail($itemId);
         $user = auth()->user();
         $profile = $user->profile;
-
+        if (!$profile) {
+            // プロフィール未登録時は案内メッセージを表示
+            return redirect('/profile')->with('error', '購入手続きにはプロフィール（住所情報）の登録が必要です。');
+        }
         return view('auth.buy', compact('item', 'profile', 'request'));
     }
 
-    public function itemBuy(Request $request)
+    public function itemBuy(BuyRequest $request)
     {
         $item = Item::findOrFail($request->input('item_id'));
         $user = auth()->user();

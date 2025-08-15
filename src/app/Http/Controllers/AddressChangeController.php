@@ -3,41 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AddressRequest;
 
 class AddressChangeController extends Controller
 {
     public function addressChangePageShow(Request $request)
     {
-        // セッションに値があればそれを渡す
-            $address = [
-                'postal_code' => '',
-                'address' => '',
-                'building' => '',
-            ];
+        $user = auth()->user();
+        $profile = $user->profile;
+        $address = [
+            'postcode' => session('buy_postcode', $profile ? $profile->postcode : ''),
+            'address' => session('buy_address', $profile ? $profile->address : ''),
+            'building' => session('buy_building', $profile ? $profile->building : ''),
+        ];
         return view('auth.address', compact('address'));
     }
 
-    public function addressChange(Request $request)
+    public function addressChange(AddressRequest $request)
     {
-        // バリデーション（全てnullable）
-        $validated = $request->validate([
-            'postal_code' => 'nullable',
-            'address' => 'nullable',
-            'building' => 'nullable',
-        ]);
         // 空でなければセッションに保存、空ならセッションから削除
-        if (!empty($validated['postal_code'])) {
-            session(['buy_postal_code' => $validated['postal_code']]);
+        if (!empty($request->input('postcode'))) {
+            session(['buy_postcode' => $request->input('postcode')]);
         } else {
-            session()->forget('buy_postal_code');
+            session()->forget('buy_postcode');
         }
-        if (!empty($validated['address'])) {
-            session(['buy_address' => $validated['address']]);
+        if (!empty($request->input('address'))) {
+            session(['buy_address' => $request->input('address')]);
         } else {
             session()->forget('buy_address');
         }
-        if (!empty($validated['building'])) {
-            session(['buy_building' => $validated['building']]);
+        if (!empty($request->input('building'))) {
+            session(['buy_building' => $request->input('building')]);
         } else {
             session()->forget('buy_building');
         }
