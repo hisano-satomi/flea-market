@@ -20,19 +20,18 @@
             <!-- 検索フォーム -->
             <div class="search-form">
                 <form method="GET" action="/search">
-                    <input type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
-                    <button type="submit">🔍</button>
+                    <input class="search-input" type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
                 </form>
             </div>
             
             <!-- ナビゲーション -->
             <nav class="header-nav">
-                <a href="/mypage">マイページ</a>
-                <a href="/sell">出品</a>
                 <form method="POST" action="/logout">
                     @csrf
-                    <button type="submit">ログアウト</button>
+                    <button type="submit" class="header-nav-logout">ログアウト</button>
                 </form>
+                <a href="/mypage" class="header-nav-mypage">マイページ</a>
+                <a href="/sell" class="header-nav-sell">出品</a>
             </nav>
         </div>
     </header>
