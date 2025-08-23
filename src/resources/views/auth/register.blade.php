@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
     <title>coachtechフリマ</title>
     
 </head>
@@ -17,7 +19,7 @@
         <h2>会員登録</h2>
         <form method="POST" action="/register">
             @csrf
-            <div>
+            <div class="form-group">
                 <label for="name">ユーザー名</label>
                 <input id="name" type="text" name="name" value="{{ old('name') }}" autofocus>
                 @error('name')
@@ -25,7 +27,7 @@
                 @enderror
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="email">メールアドレス</label>
                 <input id="email" type="text" name="email" value="{{ old('email') }}">
                 @error('email')
@@ -33,7 +35,7 @@
                 @enderror
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="password">パスワード</label>
                 <input id="password" type="password" name="password">
                 @error('password')
@@ -41,7 +43,7 @@
                 @enderror
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="password_confirmation">確認用パスワード</label>
                 <input id="password_confirmation" type="password" name="password_confirmation">
                 @error('password_confirmation')
