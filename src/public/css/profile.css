@@ -1,0 +1,107 @@
+.profile-image-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.profile-image-preview img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #D9D9D9;
+    display: block;
+}
+
+.custom-file-label {
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid #FF5555;
+    color: #FF5555;
+    background: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.custom-file-label:hover {
+    background: #FFF0F0;
+}
+
+input[type="file"]::-webkit-file-upload-button,
+input[type="file"]::file-selector-button {
+    display: none;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+main {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 24px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.profile-form {
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.form-group {
+    width: 100%;
+}
+
+form label {
+    font-size: 15px;
+    margin-bottom: 6px;
+    color: #222;
+    display: block;
+    text-align: left;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus {
+    border-color: #888;
+}
+
+.update-btn {
+    padding: 10px 0;
+    background: #FF5555;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-align: center;
+    width: 100%;
+}
+
+.update-btn:hover {
+    background: #ff2222;
+}
+
+form div[style*="color:red"] {
+    font-size: 13px;
+    margin-top: 4px;
+}
