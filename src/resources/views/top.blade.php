@@ -1,5 +1,9 @@
 @extends(auth()->check() ? 'layouts.after-login' : 'layouts.before-login')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/top.css') }}">
+@endsection
+
 @section('content')
 <div class="container">
     <!-- タブナビゲーション -->

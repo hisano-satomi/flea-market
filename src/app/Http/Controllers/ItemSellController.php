@@ -44,18 +44,20 @@ class ItemSellController extends Controller
             'user_id' => auth()->id(),
             'img' => $imagePath,
             'condition_id' => $conditionId,
-            'name' => $request->item_name,
+            'name' => $request->name,
             'brand' => $request->brand_name,
-            'description' => $request->item_description,
+            'description' => $request->description,
             'price' => $request->price,
         ]);
 
         // 全てのカテゴリーでitem_categoryレコードを作成
-        foreach ($request->categories as $categoryId) {
-            ItemCategory::create([
-                'item_id' => $item->id,
-                'category_id' => $categoryId,
-            ]);
+        if (is_array($request->category)) {
+            foreach ($request->category as $categoryId) {
+                ItemCategory::create([
+                    'item_id' => $item->id,
+                    'category_id' => $categoryId,
+                ]);
+            }
         }
 
         return redirect('/')->with('success', '商品を出品しました！');

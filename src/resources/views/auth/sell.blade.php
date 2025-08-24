@@ -1,7 +1,7 @@
 @extends('layouts.after-login')
 
 @section('content')
-<form action="/sell" method="POST">
+<form action="/sell" method="POST" enctype="multipart/form-data">
 @csrf
     <h2>商品の出品</h2>
     <div class="item-img">

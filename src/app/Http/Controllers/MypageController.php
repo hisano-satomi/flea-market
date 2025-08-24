@@ -33,7 +33,7 @@ class MypageController extends Controller
         // プロフィール情報を更新または作成
         $profile = $user->profile ?? new Profile(['user_id' => $user->id]);
         
-    $profile->postcode = $request->postcode;
+        $profile->postcode = $request->postcode;
         $profile->address = $request->address;
         $profile->building = $request->building;
         
