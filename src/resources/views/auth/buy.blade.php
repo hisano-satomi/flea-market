@@ -1,34 +1,46 @@
 @extends('layouts.after-login')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/buy.css') }}">
+@endsection
+
 @section('content')
-<form action="/buy" method="POST">
+<form class="buy-form" action="/buy" method="POST">
 @csrf
 <input type="hidden" name="item_id" value="{{ $item->id }}">
 <input type="hidden" name="send_postcode" value="{{ session()->has('buy_postcode') ? session('buy_postcode') : $profile->postcode }}">
 <input type="hidden" name="send_address" value="{{ session()->has('buy_address') ? session('buy_address') : $profile->address }}">
 <input type="hidden" name="send_building" value="{{ session()->has('buy_building') ? session('buy_building') : $profile->building }}">
     <div class="left-container">
-        <div class="item-info">
-            <div class="item-img"></div>
-            <h3>{{ $item->name }}</h3>
-            <p>￥{{ number_format($item->price) }}</p>
+        <div class="item-info-row">
+            <div class="item-img">
+                <img src="{{ $item->img ? asset('storage/' . $item->img) : asset('images/noimage.png') }}" alt="{{ $item->name }}">
+            </div>
+            <div class="item-info-text">
+                <h3>{{ $item->name }}</h3>
+                <p>￥{{ number_format($item->price) }}</p>
+            </div>
         </div>
-        <div class="item-payment">
-            <h4>支払い方法</h4>
-            <select id="payment" name="payment">
-                <option value="convenience_store">コンビニ払い</option>
-                <option value="credit_card">カード払い</option>
-            </select>
-            @error('payment')
-                <div style="color:red;">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="send-address">
-            <h4>配送先</h4>
-            <a href="/buy/address?item_id={{ $item->id }}">変更する</a>
-            <p>{{ session()->has('buy_postcode') ? session('buy_postcode') : $profile->postcode }}</p>
-            <p>{{ session()->has('buy_address') ? session('buy_address') : $profile->address }}</p>
-            <p>{{ session()->has('buy_building') ? session('buy_building') : $profile->building }}</p>
+        <div class="item-payment-address">
+            <div class="item-payment">
+                <h4>支払い方法</h4>
+                <select id="payment" name="payment">
+                    <option value="convenience_store">コンビニ払い</option>
+                    <option value="credit_card">カード払い</option>
+                </select>
+                @error('payment')
+                    <div style="color:red;">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="send-address">
+                <div class="send-address-row">
+                    <h4>配送先</h4>
+                    <a href="/buy/address?item_id={{ $item->id }}" class="change-link">変更する</a>
+                </div>
+                <p>{{ session()->has('buy_postcode') ? session('buy_postcode') : $profile->postcode }}</p>
+                <p>{{ session()->has('buy_address') ? session('buy_address') : $profile->address }}</p>
+                <p>{{ session()->has('buy_building') ? session('buy_building') : $profile->building }}</p>
+            </div>
         </div>
     </div>
     <div class="right-container">
