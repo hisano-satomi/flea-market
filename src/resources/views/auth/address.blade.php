@@ -1,9 +1,14 @@
 @extends('layouts.after-login')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/address.css') }}">
+@endsection
+
 @section('content')
 
-<h2>住所の変更</h2>
-<form method="POST" action="{{ route('buy.address.update') }}">
+<div class="address-main">
+    <h2 class="address-title">住所の変更</h2>
+    <form class="address-form" method="POST" action="{{ route('buy.address.update') }}">
     <input type="hidden" name="item_id" value="{{ request('item_id') }}">
     @csrf
     <div>
@@ -25,6 +30,7 @@
     <input id="building" type="text" name="building" value="{{ $address['building'] }}" autocomplete="off">
     </div>
     <button type="submit">更新する</button>
-</form>
+    </form>
+</div>
 
 @endsection
