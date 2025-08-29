@@ -1,0 +1,65 @@
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: 700px;
+    margin: 32px auto 24px auto;
+    width: 100%;
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #eee;
+    background: #fff;
+    display: block;
+}
+
+.user-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-left: 24px;
+    flex: 1;
+    color: #333;
+}
+
+.profile-edit {
+    margin-left: auto;
+}
+
+.profile-edit a {
+    color: #FF5555;
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px solid #FF5555;
+    border-radius: 20px;
+    padding: 8px 20px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.profile-edit a:hover {
+    background: #FF5555;
+    color: #fff;
+}
+
+.tab-navigation {
+    border-bottom: 2px solid #5F5F5F;
+    padding-bottom: 10px;
+    display: flex;
+    gap: 50px;
+    margin-bottom: 24px;
+    padding-left: 100px;
+}
+
+.tab-navigation a {
+    color: #5F5F5F;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.tab-button.active {
+    color: #FF0000;
+}

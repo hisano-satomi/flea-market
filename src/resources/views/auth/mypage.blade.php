@@ -1,10 +1,15 @@
 @extends('layouts.after-login')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
+@endsection
+
 @section('content')
 <div class="user-info">
     <div class="profile-image">
         <img src="" alt="Profile Image">
     </div>
+    <div class="user-name">ユーザー名</div>
     <div class="profile-edit">
         <a href="/profile">プロフィールを編集</a>
     </div>
