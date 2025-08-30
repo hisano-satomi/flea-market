@@ -59,7 +59,7 @@
             <p class="description">{{ $item->description }}</p>
         </div>
 
-        < class="item-info">
+        <div class="item-info">
             <h3>商品の情報</h3>
 
             <div class="item-category">
