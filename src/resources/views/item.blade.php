@@ -59,7 +59,7 @@
             <p class="description">{{ $item->description }}</p>
         </div>
 
-        <div class="item-info">
+        < class="item-info">
             <h3>商品の情報</h3>
 
             <div class="item-category">
@@ -69,7 +69,6 @@
                         <span class="category-pill">{{ $category->category }}</span>
                     @endforeach
                 </div>
-            </div>
             </div>
 
             <div class="item-condition">
