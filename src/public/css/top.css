@@ -11,6 +11,10 @@
     transition: border-color 0.2s;
 }
 
+.tab-button.active {
+    color: #FF0000;
+}
+
 .items-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
