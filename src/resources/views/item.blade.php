@@ -48,10 +48,14 @@
             </div>
         </div>
 
+        @if(auth()->check() && auth()->id() !== $item->user_id)
         <form method="GET" action="/buy">
             <input type="hidden" name="item_id" value="{{ $item->id }}">
             <button class="buy-button" type="submit">購入手続きへ</button>
         </form>
+        @elseif(auth()->check() && auth()->id() === $item->user_id)
+        <div class="cannot-buy-message">※自分の商品は購入できません</div>
+        @endif
         
         <div class="description-container">
             <h3>商品説明</h3>
@@ -79,11 +83,11 @@
         <div class="comment-container">
             <h3>コメント</h3>
             @foreach($comments as $comment)
-                <div class="comment-author">
-                    <div class="comment-author__img">
-                        <img src="{{ $comment->user->profile_image ?? asset('images/noimage.png') }}" alt="{{ $comment->user->name ?? '名無し' }}">
+                <div class="comment-author" style="display: flex; align-items: center; margin-bottom: 8px;">
+                    <div class="comment-author__img" style="width: 70px; height: 70px; border-radius: 50%; overflow: hidden; flex-shrink: 0;">
+                        <img src="{{ isset($comment->user->profile) && $comment->user->profile->icon ? asset('storage/profile_images/' . $comment->user->profile->icon) : asset('images/noimage.png') }}" alt="{{ $comment->user->name ?? '名無し' }}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 50%;">
                     </div>
-                    <div class="comment-author__name">{{ $comment->user->name ?? '名無し' }}</div>
+                    <div class="comment-author__name" style="margin-left: 16px; font-weight: bold;">{{ $comment->user->name ?? '名無し' }}</div>
                 </div>
                 <div class="comment-text">{{ $comment->comment }}</div>
             @endforeach

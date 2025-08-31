@@ -9,7 +9,7 @@
     <div class="profile-image">
         <img src="{{ isset(auth()->user()->profile) && auth()->user()->profile->icon ? asset('storage/profile_images/' . auth()->user()->profile->icon) : asset('images/noimage.png') }}" alt="Profile Image">
     </div>
-    <div class="user-name">ユーザー名</div>
+    <div class="user-name">{{ auth()->user()->name }}</div>
     <div class="profile-edit">
         <a href="/profile">プロフィールを編集</a>
     </div>
