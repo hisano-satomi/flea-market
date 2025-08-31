@@ -8,10 +8,10 @@
 <div class="container">
     <!-- タブナビゲーション -->
     <div class="tab-navigation">
-        <a href="/" class="tab-button {{ request('tab', 'recommend') === 'recommend' ? 'active' : '' }}">
+        <a href="{{ isset($keyword) ? '/search?keyword=' . urlencode($keyword) : '/' }}" class="tab-button {{ request('tab', 'recommend') === 'recommend' ? 'active' : '' }}">
             おすすめ
         </a>
-        <a href="/?tab=mylist" class="tab-button {{ request('tab') === 'mylist' ? 'active' : '' }}">
+        <a href="{{ isset($keyword) ? '/search?tab=mylist&keyword=' . urlencode($keyword) : '/?tab=mylist' }}" class="tab-button {{ request('tab') === 'mylist' ? 'active' : '' }}">
             マイリスト
         </a>
     </div>

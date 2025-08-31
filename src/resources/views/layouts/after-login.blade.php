@@ -20,7 +20,7 @@
             <!-- 検索フォーム -->
             <div class="search-form">
                 <form method="GET" action="/search">
-                    <input class="search-input" type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
+                    <input class="search-input" type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ isset($keyword) ? $keyword : request('keyword') }}">
                 </form>
             </div>
             

@@ -23,6 +23,7 @@ use App\Http\Controllers\MypageController;
 
 Route::get('/', [ItemController::class, 'topPageShow']);
 Route::get('/item/{id}', [ItemController::class, 'itemPageShow']);
+Route::get('/search', [ItemController::class, 'search']);
 
 Route::post('/buy', [ItemBuyController::class, 'itemBuy']);
 
