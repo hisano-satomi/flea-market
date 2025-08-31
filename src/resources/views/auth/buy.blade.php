@@ -39,7 +39,9 @@
                 </div>
                 <p>{{ session()->has('buy_postcode') ? session('buy_postcode') : $profile->postcode }}</p>
                 <p>{{ session()->has('buy_address') ? session('buy_address') : $profile->address }}</p>
-                <p>{{ session()->has('buy_building') ? session('buy_building') : $profile->building }}</p>
+                @if(session()->has('buy_building') && session('buy_building') !== '')
+                    <p>{{ session('buy_building') }}</p>
+                @endif
             </div>
         </div>
     </div>

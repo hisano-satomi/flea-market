@@ -8,7 +8,6 @@
 <div class="item-page-wrapper">
     <div class="left-container">
         <div class="item-img">
-            商品画像
             <img src="{{ $item->img ? asset('storage/' . $item->img) : asset('images/noimage.png') }}" alt="{{ $item->name }}">
         </div>
     </div>

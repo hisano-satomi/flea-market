@@ -7,7 +7,7 @@
 @section('content')
 <div class="user-info">
     <div class="profile-image">
-        <img src="" alt="Profile Image">
+        <img src="{{ isset(auth()->user()->profile) && auth()->user()->profile->icon ? asset('storage/profile_images/' . auth()->user()->profile->icon) : asset('images/noimage.png') }}" alt="Profile Image">
     </div>
     <div class="user-name">ユーザー名</div>
     <div class="profile-edit">

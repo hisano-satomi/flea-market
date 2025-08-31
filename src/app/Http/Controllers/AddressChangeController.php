@@ -32,7 +32,8 @@ class AddressChangeController extends Controller
         } else {
             session()->forget('buy_address');
         }
-        if (!empty($request->input('building'))) {
+        // 建物名が空欄ならセッションから削除
+        if (strlen(trim($request->input('building'))) > 0) {
             session(['buy_building' => $request->input('building')]);
         } else {
             session()->forget('buy_building');

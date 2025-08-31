@@ -13,7 +13,7 @@
         <div class="form-group">
             <div class="profile-image-row">
                 <div class="profile-image-preview">
-                    <img id="profile-preview" src="{{ isset($user->profile_image) ? asset('storage/profile_images/' . $user->profile_image) : '' }}" alt="">
+                    <img id="profile-preview" src="{{ isset($user->profile) && $user->profile->icon ? asset('storage/profile_images/' . $user->profile->icon) : asset('images/noimage.png') }}" alt="">
                 </div>
                 <label for="profile_image" class="custom-file-label">画像を選択する</label>
                 <input type="file" name="profile_image" id="profile_image" accept="image/*" onchange="previewProfileImage(event)" style="display:none;">

@@ -32,11 +32,18 @@ class MypageController extends Controller
 
         // プロフィール情報を更新または作成
         $profile = $user->profile ?? new Profile(['user_id' => $user->id]);
-        
         $profile->postcode = $request->postcode;
         $profile->address = $request->address;
         $profile->building = $request->building;
-        
+
+        // 画像アップロード処理
+        if ($request->hasFile('profile_image')) {
+            $image = $request->file('profile_image');
+            $filename = uniqid() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/profile_images', $filename);
+            $profile->icon = $filename;
+        }
+
         if (!$profile->exists) {
             $user->profile()->save($profile);
         } else {

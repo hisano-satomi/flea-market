@@ -11,10 +11,28 @@
     <div class="item-img">
         <label for="img">商品画像</label>
         <div class="img-preview">
-            <label for="img" class="custom-file-label">画像を選択する
-                <input type="file" id="img" name="img" accept="image/*" style="display:none;">
+            <img id="item-image-preview" src="" alt="商品画像プレビュー" style="display:none; width:100%; max-width:150px; height:auto; margin-bottom:8px; border-radius:8px;">
+            <label for="item_image" class="custom-file-label">画像を選択する
+                <input type="file" id="item_image" name="item_image" accept="image/*" style="display:none;" onchange="previewItemImage(event)">
             </label>
         </div>
+        <script>
+        function previewItemImage(event) {
+            const input = event.target;
+            const preview = document.getElementById('item-image-preview');
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                preview.src = '';
+                preview.style.display = 'none';
+            }
+        }
+        </script>
         @error('img')
             <div style="color:red;">{{ $message }}</div>
         @enderror
