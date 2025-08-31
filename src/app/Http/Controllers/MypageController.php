@@ -13,7 +13,12 @@ class MypageController extends Controller
 {
     public function mypageShow()
     {
-        return view('auth.mypage');
+    $user = auth()->user();
+    // 出品した商品
+    $sellItems = Item::where('user_id', $user->id)->get();
+    // 購入した商品
+    $buyItems = BuyItem::where('user_id', $user->id)->with('item')->get();
+    return view('auth.mypage', compact('sellItems', 'buyItems'));
     }
 
     public function mypageEditPageShow()

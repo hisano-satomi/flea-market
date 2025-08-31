@@ -26,9 +26,13 @@
                 <a href="/item/{{ $item->id }}" class="item-link">
                     <div class="item-image">
                         <img src="{{ $item->img ? asset('storage/' . $item->img) : asset('images/noimage.png') }}" alt="{{ $item->name }}">
+                        @if($item->buyItem)
+                            <div class="purchased-badge">購入済み</div>
+                        @endif
                     </div>
                     <div class="item-info">
                         <h3 class="item-name">{{ $item->name }}</h3>
+                        <p class="item-price">￥{{ number_format($item->price) }}</p>
                     </div>
                 </a>
             </div>

@@ -32,16 +32,18 @@
         @if(isset($sellItems) && $sellItems->count() > 0)
             @foreach($sellItems as $item)
                 <div class="item-card">
-                    <div class="item-image">
-                        <img src="{{ asset('images/' . ($item->image ?? 'no-image.jpg')) }}" alt="{{ $item->name }}">
-                        @if($item->is_sold)
-                            <div class="sold-badge">SOLD</div>
-                        @endif
-                    </div>
-                    <div class="item-info">
-                        <h3 class="item-name">{{ $item->name }}</h3>
-                        <p class="item-price">¥{{ number_format($item->price) }}</p>
-                    </div>
+                    <a href="/item/{{ $item->id }}" class="item-link">
+                        <div class="item-image">
+                            <img src="{{ $item->img ? asset('storage/' . $item->img) : asset('images/noimage.png') }}" alt="{{ $item->name }}">
+                            @if($item->is_sold)
+                                <div class="sold-badge">SOLD</div>
+                            @endif
+                        </div>
+                        <div class="item-info">
+                            <h3 class="item-name">{{ $item->name }}</h3>
+                            <p class="item-price">￥{{ number_format($item->price) }}</p>
+                        </div>
+                    </a>
                 </div>
             @endforeach
         @else
@@ -60,15 +62,17 @@
         @if(isset($buyItems) && $buyItems->count() > 0)
             @foreach($buyItems as $buyItem)
                 <div class="item-card">
-                    <div class="item-image">
-                        <img src="{{ asset('images/' . ($buyItem->item->image ?? 'no-image.jpg')) }}" alt="{{ $buyItem->item->name }}">
-                        <div class="purchased-badge">購入済み</div>
-                    </div>
-                    <div class="item-info">
-                        <h3 class="item-name">{{ $buyItem->item->name }}</h3>
-                        <p class="item-price">¥{{ number_format($buyItem->item->price) }}</p>
-                        <p class="purchase-date">購入日: {{ $buyItem->created_at->format('Y/m/d') }}</p>
-                    </div>
+                    <a href="/item/{{ $buyItem->item->id }}" class="item-link">
+                        <div class="item-image">
+                            <img src="{{ $buyItem->item->img ? asset('storage/' . $buyItem->item->img) : asset('images/noimage.png') }}" alt="{{ $buyItem->item->name }}">
+                            <div class="purchased-badge">購入済み</div>
+                        </div>
+                        <div class="item-info">
+                            <h3 class="item-name">{{ $buyItem->item->name }}</h3>
+                            <p class="item-price">￥{{ number_format($buyItem->item->price) }}</p>
+                            <p class="purchase-date">購入日: {{ $buyItem->created_at->format('Y/m/d') }}</p>
+                        </div>
+                    </a>
                 </div>
             @endforeach
         @else
